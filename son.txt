@@ -1,0 +1,49 @@
+#include <stdio.h>
+#include <string.h>
+#define n 50
+
+struct takimlar
+{
+
+
+};
+
+char dosyaOku(char dosyaAdi,char dizi[])
+{
+
+}
+
+
+int main()
+
+{
+    FILE *fp1;
+    char ayarlar[4][n];
+    char *c;
+    int i=0;
+    fp1=fopen("ayarlar.txt","r");
+
+   do {
+     c = fgets(ayarlar[i],100,fp1); /* bir satir okuyalim */
+       i++;
+   } while (c != NULL);          /* ta ki NULL olana kadar.. */
+   fclose(fp1);
+
+int takimSayisi=atoi(ayarlar[0]);
+
+ char takimIsmi[takimSayisi][n];
+
+   i=0;
+   fp1 = fopen("takimlar.txt","r");
+   do {
+     c = fgets(takimIsmi[i],100,fp1); /* bir satir okuyalim */
+
+       i++;    /* ekrana yazalim   */
+   } while (c != NULL);          /* ta ki NULL olana kadar.. */
+   fclose(fp1);
+printf("%s",takimIsmi[2]);
+dosyaOku("ayarlar.txt",ayarlar);
+
+
+
+}

@@ -1,0 +1,133 @@
+#include <stdio.h>
+#include <string.h>
+#define n 50
+
+struct{
+char *kisaIsim;
+char *uzunIsim;
+int macSsayisi,gSayisi,bSayisi,mSayisi,attigiGolSayisi,yedigiGolSayisi,avaraj,puan;
+
+}teams[15];
+
+int main()
+
+{
+    FILE *fp1;
+    char ayarlar[4][n];
+    char *c;
+    int i=0;
+    fp1=fopen("ayarlar.txt","r");
+
+   do {
+     c = fgets(ayarlar[i],100,fp1);
+       i++;
+   } while (c != NULL);
+   fclose(fp1);
+
+int takimSayisi=atoi(ayarlar[0]);
+
+ char takimIsmi[takimSayisi][n];
+
+   i=0;
+   fp1 = fopen("takimlar.txt","r");
+   do {
+     c = fgets(takimIsmi[i],100,fp1);
+
+       i++;
+   } while (c != NULL);
+   fclose(fp1);
+   for(int i=0;i<takimSayisi;i++)
+   {
+       teams[i].uzunIsim=takimIsmi[i];
+       teams[i].kisaIsim=i+65;
+   }
+/*printf("//======================PUAN TABLOSU=====================\\\\");
+  printf("\n");
+  printf("TAKIM ADI   O  P");*/
+     i=0;
+     char maclar[100][n];
+   fp1 = fopen("maclar.txt","r");
+   do {
+        c = fscanf( fp1 ,"%s",maclar[i]);
+        i++;
+      } while (c != EOF);
+   fclose(fp1);
+
+  i=1;
+  int j=0;
+
+   if(atoi(maclar[j+1])>atoi(maclar[j+3]))
+    {
+
+        if(strcmp(maclar[j],"A")==0)
+        {
+            teams[j].macSsayisi+=1;
+            teams[j].gSayisi+=1;
+            teams[j].puan+=2;
+            teams[j].attigiGolSayisi+=atoi(maclar[j+1]);
+            teams[j].yedigiGolSayisi-=atoi(maclar[j+3]);
+            teams[j].avaraj=teams[j].attigiGolSayisi+teams[j].yedigiGolSayisi;
+        }
+
+
+    }
+
+
+printf("%d",teams[j].mSayisi);
+
+
+
+
+
+
+}
+
+if(strcmp(maclar[j],"A")==0)
+        {
+            teams[j].macSayisi+=1;
+            teams[j].gSayisi+=1;
+            teams[j].puan+=2;
+            teams[j].attigiGolSayisi+=atoi(maclar[j+1]);
+            teams[j].yedigiGolSayisi+=atoi(maclar[j+3]);
+            teams[j].avaraj=teams[j].attigiGolSayisi-teams[j].yedigiGolSayisi;
+
+                if(strcmp(maclar[j+2],"B")==0)
+                {
+                    teams[j+1].macSayisi+=1;
+                    teams[j+1].mSayisi+=1;
+                    teams[j+1].puan-=1;
+                    teams[j+1].attigiGolSayisi+=atoi(maclar[j+3]);
+                    teams[j+1].yedigiGolSayisi+=atoi(maclar[j+1]);
+                    teams[j+1].avaraj=teams[j+1].attigiGolSayisi-teams[j+1].yedigiGolSayisi;
+
+
+                }
+
+
+        }else if(strcmp(maclar[j],"B")==0)
+        {
+            teams[j+1].macSayisi+=1;
+
+            teams[j+1].gSayisi+=1;
+
+            teams[j+1].puan+=2;
+
+            teams[j+1].attigiGolSayisi+=atoi(maclar[j+1]);
+
+            teams[j+1].yedigiGolSayisi+=atoi(maclar[j+3]);
+
+            teams[j+1].avaraj=teams[j+1].attigiGolSayisi-teams[j+1].yedigiGolSayisi;
+
+
+        }
+
+
+    }
+
+printf("%c\n",teams[1].kisaIsim);
+printf("%d\n",teams[1].yedigiGolSayisi);
+printf("%d\n",teams[1].attigiGolSayisi);
+printf("%d\n",teams[1].puan);
+printf("%d\n",teams[1].avaraj);
+
+
