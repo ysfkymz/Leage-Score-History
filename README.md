@@ -1,1 +1,1 @@
-# Leage-Score-History
+# League-Score-History
